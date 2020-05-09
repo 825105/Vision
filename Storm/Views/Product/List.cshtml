@@ -1,0 +1,35 @@
+﻿@using Storm.ViewModels
+@model ProductListViewModel
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    
+        <h2>Вся продукция</h2>
+        <h3>@Model.CurrCategory</h3>
+    
+    <div class="row mt-5 mb-2">
+        
+        @{
+            foreach (var product in Model.getAllProduct)
+            {
+                <div class="col-lg-4">
+                    <img class="img-thumbnail" src="@product.img" alt="@product.name" />
+                    <h2>@product.name</h2>
+                    <p>@product.shortdesc</p>
+                    <p>Цена: @product.price.ToString("c")</p>
+                    <p><a class="btn btn-info" href="#">Зайти</a></p>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>
